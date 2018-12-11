@@ -5,6 +5,12 @@ Tb_ajuda json
      dt_duvida          Text
      deriving Show
 
+Tb_sugestao_alimento json
+     id_usuario         Int
+     alimento_nome      Text
+     descricao          Text
+     deriving Show
+
 Tb_usuario json
      id_usuario         Int
      nome               Text
