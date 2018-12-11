@@ -10,6 +10,7 @@
 
 -- ALIMENTOS
 /sugerir-alimento SugerirAlimento POST
+/alimentos/#Text/#Int/#Int ListAlimentoByNome     GET
 
 -- USUARIO
 /usuario/alterar-objetivo AlterarObjetivo POST
