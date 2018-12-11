@@ -68,6 +68,28 @@ getPratoById idPrato idUsuario= do
     let id_prato_feito = Import.foldr (\ (Entity _ prato) valorAcum -> valorAcum + tb_prato_feitoId_prato_feito prato ) (0) prato_feito
     sendStatusJSON ok200 (object ["result" .= object["id_prato_feito" .= id_prato_feito, "id_prato" .= idPrato, "dt_consumo" .= dt_consumo, "qtd_alimentos".= qtd_alimento, "peso".= peso,"kcal_consumo" .= somakcal, "proteina_consumo".= somaproteina, "lipideos_consumo".= somalipideos ,"carboidrato_consumo" .=somacarboidrato,"magnesio_consumo" .= somamagnesio, "manganes_consumo" .= somamanganes, "fosforo_consumo" .= somafosforo, "ferro_consumo" .= somaferro, "sodio_consumo".= somasodio, "potassio_consumo" .= somaPot, "cobre_consumo" .= somacobre, "zinco_consumo" .= somazinco, "vitamina_c_consumo" .= somavitamina_c, "success" .= True]])
     
+
+postAlterarDados :: Handler TypedContent
+postAlterarDados = do
+        json <- requireJsonBody :: Handler Value
+        unpUsuarioid <- requireJsonKey "id_usuario" json
+        usuarioid <- (requireJsonParse unpUsuarioid :: Handler Tb_usuarioId)
+        _ <- runDB $ get404 usuarioid
+        unpNome <- requireJsonKey "nome" json
+        unpTelefone <- requireJsonKey "telefone" json
+        unpSexo <- requireJsonKey "sexo" json
+        unpDtNasc <- requireJsonKey "dt_nasc" json
+        unpPeso <- requireJsonKey "peso_kg" json
+        unpAltura <- requireJsonKey "altura_m" json
+        nome <- (requireJsonParse unpNome :: Handler Text)
+        telefone <- (requireJsonParse unpTelefone :: Handler Text)
+        sexo <- (requireJsonParse unpSexo :: Handler Text)
+        dtNasc <- (requireJsonParse unpDtNasc :: Handler Text)
+        peso <- (requireJsonParse unpPeso :: Handler Double)
+        altura <- (requireJsonParse unpAltura :: Handler Double)
+        runDB $ update usuarioid [Tb_usuarioNome =. nome, Tb_usuarioTelefone =. telefone, Tb_usuarioSexo =. sexo, Tb_usuarioDt_nasc =. dtNasc, Tb_usuarioPeso_kg =. peso, Tb_usuarioAltura_m =. altura]
+        sendStatusJSON ok200 (object ["success" .= True])
+
     
 -- PEGAR CHAVE ESPECÍFICA DO JSON
 requireJsonKey :: (MonadHandler m) => Text -> Value -> m Value
