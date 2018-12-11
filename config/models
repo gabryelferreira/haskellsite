@@ -49,3 +49,10 @@ Tb_alimento json
      vitamina_c         Double
      zinco              Double
      deriving Show
+
+Tb_prato json
+     id_prato           Int
+     id_usuario         Int
+     id_alimento        Int
+     quantidade         Double
+     deriving Show
