@@ -56,3 +56,10 @@ Tb_prato json
      id_alimento        Int
      quantidade         Double
      deriving Show
+
+Tb_prato_feito json
+     dt_consumo          Text
+     id_prato            Int
+     id_prato_feito      Int
+     deriving Show
+     
