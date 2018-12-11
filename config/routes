@@ -15,3 +15,5 @@
 -- USUARIO
 /usuario/alterar-objetivo AlterarObjetivo POST
 /usuario/alterar-peso-altura AlterarPesoAltura POST
+
+/prato/#Int/#Int PratoById GET
