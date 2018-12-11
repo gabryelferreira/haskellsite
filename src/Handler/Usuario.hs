@@ -13,6 +13,21 @@ import qualified Data.Aeson as J
 import qualified Data.Aeson.Parser as JP
 import Data.Conduit.Attoparsec (sinkParser) 
 
+
+postAlterarObjetivo :: Handler TypedContent
+postAlterarObjetivo = do
+    json <- requireJsonBody :: Handler Value
+    unpUsuarioid <- requireJsonKey "id_usuario" json
+    usuarioid <- (requireJsonParse unpUsuarioid :: Handler Tb_usuarioId)
+    _ <- runDB $ get404 usuarioid
+    unpObjetivo <- requireJsonKey "cd_objetivo" json
+    unpMeta <- requireJsonKey "vl_objetivo_kg" json
+    objetivo <- (requireJsonParse unpObjetivo :: Handler Text)
+    meta <- (requireJsonParse unpMeta :: Handler Double)
+    runDB $ update usuarioid [Tb_usuarioCd_objetivo =. objetivo, Tb_usuarioVl_objetivo_kg =. meta]
+    sendStatusJSON ok200 (object ["success" .= True])
+
+    
 -- PEGAR CHAVE ESPECÍFICA DO JSON
 requireJsonKey :: (MonadHandler m) => Text -> Value -> m Value
 requireJsonKey key jObject@(Object hashMap) = case lookup key hashMap of
