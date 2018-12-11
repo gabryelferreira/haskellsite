@@ -4,3 +4,20 @@ Tb_ajuda json
      resposta           Text
      dt_duvida          Text
      deriving Show
+
+Tb_usuario json
+     id_usuario         Int
+     nome               Text
+     dt_nasc            Text
+     sexo               Text
+     email              Text
+     usuario            Text
+     senha              Text
+     foto               Text
+     url_reset          Text
+     telefone           Text
+     peso_kg            Double
+     altura_m           Double
+     cd_objetivo        Text
+     vl_objetivo_kg     Double
+     deriving Show
