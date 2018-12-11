@@ -10,3 +10,6 @@
 
 -- ALIMENTOS
 /sugerir-alimento SugerirAlimento POST
+
+-- USUARIO
+/usuario/alterar-objetivo AlterarObjetivo POST
