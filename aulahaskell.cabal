@@ -27,6 +27,7 @@ library
       Handler.Common
       Handler.Ajuda
       Handler.Usuario
+      Handler.Prato
       Import
       Import.NoFoundation
       Model
