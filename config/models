@@ -21,3 +21,25 @@ Tb_usuario json
      cd_objetivo        Text
      vl_objetivo_kg     Double
      deriving Show
+
+Tb_alimento json
+     nome               Text
+     id_alimento        Int
+     calcio             Double
+     carboidrato        Double
+     cobre              Double
+     ferro              Double
+     fibra_alimentar    Double
+     fosforo            Double
+     img_url            Text
+     kcal               Double
+     lipideos           Double
+     magnesio           Double
+     manganes           Double
+     potassio           Double
+     proteina           Double
+     quantidade         Double
+     sodio              Double
+     vitamina_c         Double
+     zinco              Double
+     deriving Show
