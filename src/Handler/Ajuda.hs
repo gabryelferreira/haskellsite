@@ -10,3 +10,9 @@ import Import
 import Network.HTTP.Types.Status
 import Database.Persist.MySQL
 
+-- funcao para enviar uma duvida
+postContato :: Handler TypedContent
+postContato = do
+     ajuda <- requireJsonBody :: Handler Tb_ajuda
+     _ <- runDB $ insert ajuda
+     sendStatusJSON ok200 (object ["success" .= True])
