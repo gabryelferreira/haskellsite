@@ -27,6 +27,18 @@ postAlterarObjetivo = do
     runDB $ update usuarioid [Tb_usuarioCd_objetivo =. objetivo, Tb_usuarioVl_objetivo_kg =. meta]
     sendStatusJSON ok200 (object ["success" .= True])
 
+postAlterarPesoAltura :: Handler TypedContent
+postAlterarPesoAltura = do
+    json <- requireJsonBody :: Handler Value
+    unpUsuarioid <- requireJsonKey "id_usuario" json
+    usuarioid <- (requireJsonParse unpUsuarioid :: Handler Tb_usuarioId)
+    _ <- runDB $ get404 usuarioid
+    unpPeso <- requireJsonKey "peso_kg" json
+    unpAltura <- requireJsonKey "altura_m" json
+    peso <- (requireJsonParse unpPeso :: Handler Double)
+    altura <- (requireJsonParse unpAltura :: Handler Double)
+    runDB $ update usuarioid [Tb_usuarioPeso_kg =. peso, Tb_usuarioAltura_m =. altura]
+    sendStatusJSON ok200 (object ["success" .= True])
     
 -- PEGAR CHAVE ESPECÍFICA DO JSON
 requireJsonKey :: (MonadHandler m) => Text -> Value -> m Value
