@@ -2,3 +2,11 @@
 
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
+
+-- FUNCOES NUTRING
+
+-- HELP
+/contato Contato POST
+
+-- ALIMENTOS
+/sugerir-alimento SugerirAlimento POST

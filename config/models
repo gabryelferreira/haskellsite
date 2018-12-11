@@ -1,0 +1,6 @@
+Tb_ajuda json
+     id_usuario         Int
+     duvida             Text
+     resposta           Text
+     dt_duvida          Text
+     deriving Show
