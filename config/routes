@@ -4,3 +4,6 @@
 /robots.txt RobotsR GET
 
 -- FUNCOES NUTRING
+
+-- HELP
+/contato Contato POST
