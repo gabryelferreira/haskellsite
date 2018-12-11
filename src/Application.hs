@@ -1,3 +1,16 @@
+{-
+    ESTE CODIGO ESTÁ LIVRE DE BUGS
+               _ _       \ \
+    .-"""""-. / \_> /\    |/
+   /         \.'`  `',.--//
+ -(    BUG    I      I  @@\
+   \         /'.____.'\___|
+    '-.....-' __/ | \   (`)
+              /   / /
+                  \ \
+    MOSQUITÃO É PROIBIDO AQUI!!!!
+-}
+
 {-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
