@@ -12,3 +12,10 @@ import Database.Persist.MySQL
 import qualified Data.Aeson as J
 import qualified Data.Aeson.Parser as JP
 import Data.Conduit.Attoparsec (sinkParser) 
+
+-- PEGAR CHAVE ESPECÍFICA DO JSON
+requireJsonKey :: (MonadHandler m) => Text -> Value -> m Value
+requireJsonKey key jObject@(Object hashMap) = case lookup key hashMap of
+                                    Nothing -> invalidArgs ["Couldn't find a value when looking up the key " <> key <> " in the object: " <> (pack (show jObject))]
+                                    Just v -> return v
+requireJsonKey key invalid = invalidArgs ["When looking up the key " <> key <> ", expected an object but got a " ++ (pack (show invalid))]
