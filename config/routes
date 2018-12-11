@@ -7,3 +7,6 @@
 
 -- HELP
 /contato Contato POST
+
+-- ALIMENTOS
+/sugerir-alimento SugerirAlimento POST
